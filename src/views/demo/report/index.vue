@@ -25,9 +25,13 @@
 
 <script>
   import {experiment,delExperiment,addExperiment,editExperiment} from '@api/experiment'
+  import upload from "../page5/upload";
 
 export default {
   name: 'report',
+  components: {
+    upload,
+  },
   created() {
     this.getExperiment()
   },
@@ -71,7 +75,7 @@ export default {
           message: '保存成功',
           type: 'success'
         });
-        let experiment = JSON.stringify({"eno": row.eno, "ename": row.ename, "name": row.name,"note":row.note})
+        let experiment = JSON.stringify({'id':row.id,"eno": row.eno, "ename": row.ename, "name": row.name,"note":row.note,"cno":row.cno,"course":row.course})
         addExperiment(experiment)
         done()
         this.formOptions.saveLoading = false
@@ -94,7 +98,7 @@ export default {
           type: 'success'
         })
 
-        let experiment = JSON.stringify({'id':row.id,"eno": row.eno, "ename": row.ename, "name": row.name,"note":row.note})
+        let experiment = JSON.stringify({'id':row.id,"eno": row.eno, "ename": row.ename, "name": row.name,"note":row.note,"cno":row.cno,"course":row.course})
         editExperiment(experiment)
         // done可以传入一个对象来修改提交的某个字段
         done({
@@ -128,7 +132,7 @@ export default {
         {
           title: 'id',
           key: 'id',
-          width: '180'
+          width: '40'
         },
         {
           title: '实验编号',
@@ -155,23 +159,36 @@ export default {
           title: '备注',
           key:'note',
           width: '180'
-        }
+        },{
+          title: '上传',
+          width: '180',
+          component:{
+            name:upload,
+          }
+      }
+
       ],
       data: [
       ],
       addTemplate: {
         eno: {
-          title: 'eno',
+          title: '实验编号',
         },
         ename: {
-          title: 'ename',
+          title: '实验标题',
         },
         name: {
-          title: 'name',
+          title: '发布教师',
+        },
+        course:{
+          title:'课程'
+        },
+        cno:{
+          title:'班级'
         },
         note:{
-          title:'note'
-        }
+          title:'备注'
+        },
       },
       editTemplate: {
         eno: {
@@ -186,9 +203,15 @@ export default {
           title: '教师姓名',
           value: ''
         },
+        course:{
+          title:'课程'
+        },
+        cno:{
+          title:'班级'
+        },
         note:{
           title:'备注'
-        }
+        },
       },
       rowHandle: {
         columnHeader: '编辑表格',

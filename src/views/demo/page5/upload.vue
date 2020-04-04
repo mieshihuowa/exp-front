@@ -11,7 +11,6 @@
     :on-exceed="handleExceed"
     :file-list="fileList">
     <el-button size="small" type="primary">点击上传</el-button>
-    <div slot="tip" class="el-upload__tip">文件</div>
   </el-upload>
 </template>
 
@@ -47,8 +46,8 @@
         },
         getUrl(){
          let sno =  util.cookies.get("no")
-
-         return  "http://localhost:8098/file/upload"+"?sno="+sno
+          let eno = this.scope.row.eno
+         return  "http://localhost:8098/file/upload"+"?eno="+eno
         }
       }
     }

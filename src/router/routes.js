@@ -32,13 +32,13 @@ const frameIn = [
         component: _import('demo/report')
       },
       {
-        path: 'page2',
-        name: 'page2',
+        path: 'explist',
+        name: 'explist',
         meta: {
           title: '页面 2',
           auth: true
         },
-        component: _import('demo/page2')
+        component: _import('demo/explist')
       },
       {
         path: 'page3',
