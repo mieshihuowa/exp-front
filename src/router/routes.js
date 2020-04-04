@@ -23,13 +23,13 @@ const frameIn = [
       },
       // 演示页面
       {
-        path: 'page1',
-        name: 'page1',
+        path: 'report',
+        name: 'report',
         meta: {
-          title: '页面 1',
+          title: '实验发布',
           auth: true
         },
-        component: _import('demo/page1')
+        component: _import('demo/report')
       },
       {
         path: 'page2',
@@ -49,6 +49,25 @@ const frameIn = [
         },
         component: _import('demo/page3')
       },
+      {
+        path: 'page-demo',
+        name: 'page4',
+        meta:{
+          title: '页面4',
+          auth: true
+        },
+        component: _import('demo/page-demo')
+      },
+      {
+        path: 'page5',
+        name: 'page5',
+        meta:{
+          title: '学生信息管理',
+          auth: true
+        },
+        component: _import('demo/page5')
+      },
+
       // 系统 前端日志
       {
         path: 'log',

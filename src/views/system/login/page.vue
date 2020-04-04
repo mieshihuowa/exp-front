@@ -68,16 +68,6 @@
                 </el-button>
               </el-form>
             </el-card>
-            <p
-              class="page-login--options"
-              flex="main:justify cross:center">
-              <span><d2-icon name="question-circle"/> 忘记密码</span>
-              <span>注册用户</span>
-            </p>
-            <!-- quick login -->
-            <el-button class="page-login--quick" size="default" type="info" @click="dialogVisible = true">
-              快速选择用户（测试功能）
-            </el-button>
           </div>
         </div>
         <div class="page-login--content-footer">
@@ -105,19 +95,6 @@
         </div>
       </div>
     </div>
-    <el-dialog
-      title="快速选择用户"
-      :visible.sync="dialogVisible"
-      width="400px">
-      <el-row :gutter="10" style="margin: -20px 0px -10px 0px;">
-        <el-col v-for="(user, index) in users" :key="index" :span="8">
-          <div class="page-login--quick-user" @click="handleUserBtnClick(user)">
-            <d2-icon name="user-circle-o"/>
-            <span>{{user.name}}</span>
-          </div>
-        </el-col>
-      </el-row>
-    </el-dialog>
   </div>
 </template>
 
@@ -146,11 +123,7 @@ export default {
           username: 'editor',
           password: 'editor'
         },
-        {
-          name: 'User1',
-          username: 'user1',
-          password: 'user1'
-        }
+
       ],
       // 表单
       formLogin: {
@@ -219,7 +192,7 @@ export default {
           // 注意 这里的演示没有传验证码
           // 具体需要传递的数据请自行修改代码
           this.login({
-            username: this.formLogin.username,
+            id: this.formLogin.username,
             password: this.formLogin.password
           })
             .then(() => {

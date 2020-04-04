@@ -1,3 +1,4 @@
+
 <template>
   <el-dropdown size="small" class="d2-mr">
     <span class="btn-text">{{info.name ? `你好 ${info.name}` : '未登录'}}</span>
@@ -12,6 +13,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import util from '@/libs/util.js'
 export default {
   computed: {
     ...mapState('d2admin/user', [
