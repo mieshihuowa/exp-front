@@ -1,16 +1,16 @@
 import request from '@/plugin/axios'
 
-export function delStudents (idList) {
+export function delUser (idList) {
   return request({
-    url: '/x/students?idList='+idList,
+    url: '/x/user?idList='+idList,
     method: 'delete',
     params: idList,
   })
 }
 
-export function addStudents (data) {
+export function addUser (data) {
   return request({
-    url: '/x/students',
+    url: '/x/user',
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -20,9 +20,9 @@ export function addStudents (data) {
   })
 }
 
-export function editStudents (data) {
+export function editUser (data) {
   return request({
-    url: '/x/students',
+    url: '/x/user',
     method: 'put',
     headers: {
       'Content-Type': 'application/json'

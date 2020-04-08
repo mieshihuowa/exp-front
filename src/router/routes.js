@@ -21,7 +21,6 @@ const frameIn = [
         },
         component: _import('system/index')
       },
-      // 演示页面
       {
         path: 'report',
         name: 'report',
@@ -41,13 +40,13 @@ const frameIn = [
         component: _import('demo/explist')
       },
       {
-        path: 'page3',
-        name: 'page3',
+        path: 'uploadList',
+        name: 'uploadList',
         meta: {
-          title: '页面 3',
+          title: '实验上交情况',
           auth: true
         },
-        component: _import('demo/page3')
+        component: _import('demo/uploadList')
       },
       {
         path: 'page-demo',
@@ -61,9 +60,10 @@ const frameIn = [
       {
         path: 'page5',
         name: 'page5',
+        hidden:true,
         meta:{
           title: '学生信息管理',
-          auth: true
+          auth: true,
         },
         component: _import('demo/page5')
       },

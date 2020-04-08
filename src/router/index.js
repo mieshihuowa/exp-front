@@ -10,6 +10,8 @@ import util from '@/libs/util.js'
 
 // 路由数据
 import routes from './routes'
+import menuAside from "@/menu/aside";
+import taide from "@/menu/taide";
 
 // fix vue-router NavigationDuplicated
 const VueRouterPush = VueRouter.prototype.push
@@ -41,12 +43,24 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start()
   // 关闭搜索面板
   store.commit('d2admin/search/set', false)
+ // await store.dispatch('d2admin/menu/asideCollapseLoad', null, { root: true })
   // 验证当前路由所有的匹配中是否需要有登录验证的
   if (to.matched.some(r => r.meta.auth)) {
     // 这里暂时将cookie里是否存有token作为验证是否登录的条件
     // 请根据自身业务需要修改
     const token = util.cookies.get('token')
     if (token && token !== 'undefined') {
+      let role = util.cookies.get('role')
+      if(role == "2"){
+        console.log("2")
+        store.commit('d2admin/menu/asideSet', taide)
+        await store.dispatch('d2admin/menu/asideCollapseLoad', false, { root: true })
+
+      }else {
+        store.commit('d2admin/menu/asideSet', menuAside)
+       await store.dispatch('d2admin/menu/asideCollapseLoad', false, { root: true })
+      }
+
       next()
     } else {
       // 没有登录的时候跳转到登录界面

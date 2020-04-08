@@ -93,8 +93,8 @@
 </template>
 
 <script>
-  import { students } from '@/api/sys.login'
-  import {delStudents, addStudents, editStudents} from "../../../api/students";
+  import { user } from '@/api/sys.login'
+  import {delUser, addUser, editUser} from "../../../api/students";
   import upload from "./upload";
 
   export default {
@@ -103,11 +103,11 @@
       upload,
     },
     created() {
-      this.getStudents()
+      this.getUser()
     },
     methods: {
-      getStudents() {
-        students(this.form).then(rs => {
+      getUser() {
+        user(this.form).then(rs => {
           this.data = rs.records
           console.log(rs)
         })
@@ -120,7 +120,7 @@
             message: '删除成功',
             type: 'success'
           })
-          delStudents(row.id).then(console.log(row))
+          delUser(row.id).then(console.log(row))
 
           done()
         }, 300)
@@ -145,8 +145,8 @@
             message: '保存成功',
             type: 'success'
           });
-          let student = JSON.stringify({"sno": row.sno, "sname": row.sname, "cno": row.cno})
-          addStudents(student)
+          let user = JSON.stringify({"sno": row.sno, "sname": row.sname, "cno": row.cno})
+          addUser(user)
           done()
           this.formOptions.saveLoading = false
         }, 300)
@@ -168,8 +168,8 @@
             type: 'success'
           })
 
-          let student = JSON.stringify({"id":row.id,"sno":row.sno,"sname":row.sname,"cno":row.cno})
-          editStudents(student)
+          let user = JSON.stringify({"id":row.id,"sno":row.sno,"sname":row.sname,"cno":row.cno})
+          editUser(user)
           // done可以传入一个对象来修改提交的某个字段
           done({
           //  address: '我是通过done事件传入的数据！'
@@ -183,7 +183,7 @@
       handleFormSubmit () {
         this.$refs.form.validate((valid) => {
           if (valid) {
-            this.getStudents()
+            this.getUser()
             this.$emit('submit', this.form)
 
           } else {

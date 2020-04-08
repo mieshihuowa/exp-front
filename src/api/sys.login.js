@@ -8,9 +8,9 @@ import request from '@/plugin/axios'
 //   })
 // }
 
-export function students (sno) {
+export function user (sno) {
   return request({
-    url: '/x/students',
+    url: '/x/user',
     method: 'get',
     params:sno,
   })
@@ -18,7 +18,7 @@ export function students (sno) {
 
 export function AccountLogin (data) {
   return request({
-    url: '/x/students/login',
+    url: '/x/user/login',
     method: 'post',
     headers: {
       'Content-Type': 'application/json'

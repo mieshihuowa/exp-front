@@ -2,9 +2,11 @@ import { Message, MessageBox } from 'element-ui'
 import util from '@/libs/util.js'
 import router from '@/router'
 import { AccountLogin } from '@api/sys.login'
-
+import tAside from '@/menu/taide'
+import menuAside from '@/menu/aside'
 export default {
   namespaced: true,
+  inject:['reload'],
   actions: {
     /**
      * @description 登录
@@ -20,7 +22,7 @@ export default {
     } = {}) {
       return new Promise((resolve, reject) => {
         // 开始请求登录接口
-        var str = JSON.stringify({"sno":id,"password":password})
+        var str = JSON.stringify({"sno":id,"passwd":password})
         AccountLogin(
           // username,
           // password
@@ -40,11 +42,18 @@ export default {
             util.cookies.set('uuid', res[0].uuid)
             util.cookies.set('token', res[0].token)
             util.cookies.set("no",res[0].no)
-            console.log(util.cookies.get("no")+"yang")
+            util.cookies.set("role",res[0].role)
+            util.cookies.set("cno",res[0].cno)
             // 设置 vuex 用户信息
             await dispatch('d2admin/user/set', {
               name: res[0].name,
             }, { root: true })
+
+            if(res[0].role=="2") {
+              console.log("教师")
+            }else{
+              console.log("学生")
+            }
             // 用户登录后从持久化数据加载一系列的设置
             await dispatch('load')
             // 结束
@@ -54,7 +63,9 @@ export default {
             console.log('err: ', err)
             reject(err)
           })
-      })
+
+      }
+      )
     },
     /**
      * @description 注销用户并返回登录页面
@@ -72,6 +83,7 @@ export default {
         // 清空 vuex 用户信息
         await dispatch('d2admin/user/set', {}, { root: true })
         // 跳转路由
+
         router.push({
           name: 'login'
         })
@@ -108,6 +120,8 @@ export default {
         await dispatch('d2admin/theme/load', null, { root: true })
         // DB -> store 加载页面过渡效果设置
         await dispatch('d2admin/transition/load', null, { root: true })
+
+        await dispatch('d2admin/page/closeAll',null,{ root: true })
         // DB -> store 持久化数据加载上次退出时的多页列表
         await dispatch('d2admin/page/openedLoad', null, { root: true })
         // DB -> store 持久化数据加载侧边栏折叠状态
@@ -118,6 +132,7 @@ export default {
         await dispatch('d2admin/color/load', null, { root: true })
         // end
         resolve()
+
       })
     }
   }

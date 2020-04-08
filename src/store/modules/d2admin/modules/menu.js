@@ -19,6 +19,7 @@ function supplementMenuPath (menu) {
 
 export default {
   namespaced: true,
+  inject:['reload'],
   state: {
     // 顶栏菜单
     header: [],

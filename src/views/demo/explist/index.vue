@@ -5,7 +5,6 @@
       ref="d2Crud"
       :columns="columns"
       :data="data"
-      :rowHandle="rowHandle"
     >
     </d2-crud>
 
@@ -13,9 +12,10 @@
 </template>
 
 <script>
-  import {experiment,delExperiment,addExperiment,editExperiment} from '@api/experiment'
+  import {experiment} from '@api/experiment'
   import download from "./download";
   import upload from "../page5/upload";
+  import util from '@/libs/util.js'
 export default {
   name: 'explist',
   created() {
@@ -23,7 +23,10 @@ export default {
   },
   methods:{
     getExperiment(){
-      experiment(this.form).then(rs => {
+      let cno = util.cookies.get("cno")
+      let  str = ({"cno":cno})
+      console.log(str)
+      experiment(str).then(rs => {
         this.data = rs.records
         console.log(rs)
       })

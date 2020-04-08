@@ -113,7 +113,7 @@ export default {
     handleFormSubmit () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.getStudents()
+          this.getUser()
           this.$emit('submit', this.form)
 
         } else {

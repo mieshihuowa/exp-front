@@ -14,7 +14,8 @@ import router from './router'
 import menuHeader from '@/menu/header'
 import menuAside from '@/menu/aside'
 import { frameInRoutes } from '@/router/routes'
-
+import util from '@/libs/util.js'
+import taide from "@/menu/taide";
 // 核心插件
 Vue.use(d2Admin)
 Vue.use(D2Crud)
@@ -30,9 +31,15 @@ new Vue({
     // 设置顶栏菜单
     this.$store.commit('d2admin/menu/headerSet', menuHeader)
     // 设置侧边栏菜单
-    this.$store.commit('d2admin/menu/asideSet', menuAside)
+    let role = util.cookies.get("role")
+    if(role == "1"){
+      this.$store.commit('d2admin/menu/asideSet', menuAside)
+    }else {
+      this.$store.commit('d2admin/menu/asideSet', taide)
+    }
     // 初始化菜单搜索功能
     this.$store.commit('d2admin/search/init', menuHeader)
+
   },
   mounted () {
     // 展示系统信息
