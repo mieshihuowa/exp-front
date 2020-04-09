@@ -49,16 +49,16 @@
                     <i slot="prepend" class="fa fa-keyboard-o"></i>
                   </el-input>
                 </el-form-item>
-                <el-form-item prop="code">
-                  <el-input
-                    type="text"
-                    v-model="formLogin.code"
-                    placeholder="验证码">
-                    <template slot="append">
-                      <img class="login-code" src="./image/login-code.png">
-                    </template>
-                  </el-input>
-                </el-form-item>
+<!--                <el-form-item prop="code">-->
+<!--                  <el-input-->
+<!--                    type="text"-->
+<!--                    v-model="formLogin.code"-->
+<!--                    placeholder="验证码">-->
+<!--                    <template slot="append">-->
+<!--&lt;!&ndash;                      <img class="login-code" src="./image/login-code.png">&ndash;&gt;-->
+<!--                    </template>-->
+<!--                  </el-input>-->
+<!--                </el-form-item>-->
                 <el-button
                   size="default"
                   @click="submit"
@@ -71,27 +71,10 @@
           </div>
         </div>
         <div class="page-login--content-footer">
-          <p class="page-login--content-footer-locales">
-            <a
-              v-for="language in $languages"
-              :key="language.value"
-              @click="onChangeLocale(language.value)">
-              {{ language.label }}
-            </a>
-          </p>
-          <p class="page-login--content-footer-copyright">
-            Copyright
-            <d2-icon name="copyright"/>
-            2018 D2 Projects 开源组织出品
-            <a href="https://github.com/FairyEver">
-              @FairyEver
-            </a>
-          </p>
-          <p class="page-login--content-footer-options">
-            <a href="#">帮助</a>
-            <a href="#">隐私</a>
-            <a href="#">条款</a>
-          </p>
+
+
+
+
         </div>
       </div>
     </div>

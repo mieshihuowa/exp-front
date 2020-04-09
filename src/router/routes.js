@@ -34,7 +34,7 @@ const frameIn = [
         path: 'explist',
         name: 'explist',
         meta: {
-          title: '页面 2',
+          title: '查看实验',
           auth: true
         },
         component: _import('demo/explist')
@@ -49,23 +49,33 @@ const frameIn = [
         component: _import('demo/uploadList')
       },
       {
-        path: 'page-demo',
-        name: 'page4',
+        path: 'nopub',
+        name: 'nopub',
         meta:{
-          title: '页面4',
+          title: '未交实验',
           auth: true
         },
-        component: _import('demo/page-demo')
+        component: _import('demo/nopub')
       },
       {
         path: 'page5',
         name: 'page5',
-        hidden:true,
+
         meta:{
           title: '学生信息管理',
           auth: true,
         },
         component: _import('demo/page5')
+      },
+      {
+        path: 'noPubStudents',
+        name: 'noPubStudents',
+
+        meta:{
+          title: '未上交报告详情',
+          auth: true,
+        },
+        component: _import('demo/noPubStudents')
       },
 
       // 系统 前端日志

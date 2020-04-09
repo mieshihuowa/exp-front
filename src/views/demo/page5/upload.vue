@@ -47,8 +47,10 @@
         getUrl(){
          let sno =  util.cookies.get("no")
           let role = util.cookies.get("role")
+          let name = util.cookies.get("name")
+          console.log(name)
           let eno = this.scope.row.eno
-         return  "http://localhost:8098/file/upload"+"?eno="+eno+"&"+"role="+role+"&"+"sno="+sno
+         return  "http://localhost:8098/file/upload"+"?eno="+eno+"&"+"role="+role+"&"+"sno="+sno+"&"+"name="+name
         }
       }
     }

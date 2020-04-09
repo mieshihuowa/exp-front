@@ -44,6 +44,7 @@ export default {
             util.cookies.set("no",res[0].no)
             util.cookies.set("role",res[0].role)
             util.cookies.set("cno",res[0].cno)
+            util.cookies.set("name",res[0].name)
             // 设置 vuex 用户信息
             await dispatch('d2admin/user/set', {
               name: res[0].name,

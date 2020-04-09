@@ -13,11 +13,15 @@
 
 <script>
   import {experiment} from '@api/experiment'
-  import download from "./download";
+  import download from "../explist/download";
   import upload from "../page5/upload";
   import util from '@/libs/util.js'
 export default {
   name: 'explist',
+  components: {
+    upload,
+    download
+  },
   created() {
     this.getExperiment()
   },

@@ -16,6 +16,21 @@ export function delExperiment (idList) {
   })
 }
 
+export function noPubExperiment (sno) {
+  return request({
+    url: '/x/experiment/noPubExperiment?sno='+sno,
+    method: 'get',
+  })
+}
+
+export function noPubStudens (data) {
+  return request({
+    url: '/x/experiment/noPubStudents?size=1000',
+    method: 'get',
+    Params:data
+  })
+}
+
 export function addExperiment (data) {
   return request({
     url: '/x/experiment',

@@ -229,13 +229,7 @@
           {
             title: 'cno',
             key: 'cno'
-          },{
-            title: '上传',
-            component:{
-              name:upload,
-            }
-
-          }
+          },
         ],
         form: {
           //type: '1',
